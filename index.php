@@ -36,7 +36,9 @@ class User
         if ($user && password_verify($password, $user["password"])) {
             // Generate a random token
             $token = bin2hex(random_bytes(32));
-
+			
+			// Store user object in session
+			$_SESSION["user"] = $user;
             // Store the token in the database along with the user ID and an expiration time (e.g., 1 hour from now)
             $expiryTime = time() + 3600; // 1 hour
             $stmt = $this->pdo->prepare("INSERT INTO user_tokens (user_id, token, expiry_time) VALUES (?, ?, ?)");
@@ -159,6 +161,13 @@ if ($user->isLoggedIn()) {
 		.mb-5 {
 			margin-bottom:5px;
 		}
+		.mr-24 {
+			margin-right:24px;
+		}
+		.btn-container {
+			display:flex;
+			justify-content: space-between;
+		}
 	</style>
 </head>
 <body>
@@ -175,7 +184,11 @@ if ($user->isLoggedIn()) {
 				<input type="password" name="password" required>
 			</div>
 			<span class="errmsg mb-12"><?php echo $errMessage ?></span>
-			<input type="submit" value="Login">
+			<div class="btn-container">
+				<a href="/register.php" class="mr-24">Register</a>
+				<input type="submit" value="Login">
+			</div>
+			
 		</section>
     </form>
 </body>

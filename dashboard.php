@@ -1,5 +1,5 @@
 <?php
-
+	session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +17,10 @@
 			padding-top:200px;
 			flex-direction:column;
 		}
+
+		.fullname {
+			color:#2980b9;
+		}
 		.container h1 {
 			font-size:45px;
 		}
@@ -24,7 +28,7 @@
 </head>
 <body>
 	<section class="container">
-		<h1>Welcome to the Dashboard</h1>
+		<h1>Hi <span class="fullname"><?php echo $_SESSION['user']['full_name'] ?></span>, Welcome to the Dashboard</h1>
 		<a href="/logout.php">Log Out</a>
 	</section>
 </body>

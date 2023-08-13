@@ -25,7 +25,6 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(100) DEFAULT NULL,
   `full_name` varchar(100) DEFAULT NULL,
-  `other_data` text,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -33,7 +32,7 @@ CREATE TABLE `users` (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES ('1', 'admin', '$2a$10$KUyzYU7uK1X2ZUauKB.uK.rbHooV8BrGGyFuGZ9PiTxrqzQiHtW.a', 'admin@admin.com', 'James Bond', null);
+INSERT INTO `users` VALUES ('1', 'admin', '$2a$10$KUyzYU7uK1X2ZUauKB.uK.rbHooV8BrGGyFuGZ9PiTxrqzQiHtW.a', 'admin@admin.com', 'Admin', null);
 
 -- ----------------------------
 -- Table structure for `user_tokens`
